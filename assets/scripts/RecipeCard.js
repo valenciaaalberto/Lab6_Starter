@@ -8,10 +8,16 @@ class RecipeCard extends HTMLElement {
 
     // EXPOSE - START (All expose numbers start with A)
     // A1. TODO - Attach the shadow DOM to this Web Component (leave the mode open)
+    let shadow = this.attachShadow({mode:"open"});
     // A2. TODO - Create an <article> element - This will hold our markup once our data is set
+    const articleElement = document.createElement('article');
     // A3. TODO - Create a style element - This will hold all of the styles for the Web Component
+    const styleElement = document.createElement('style');
     // A4. TODO - Insert all of the styles from cardTemplate.html into the <style> element you just made
+    styleElement.innerHTML = 'reference/cardTemplate.html'
     // A5. TODO - Append the <style> and <article> elements to the Shadow DOM
+    shadow.append(articleElement);
+    shadow.append(styleElement);
   }
 
   /**
