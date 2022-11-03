@@ -8,7 +8,6 @@ function init() {
   // Get the recipes from localStorage
   let recipes = getRecipesFromStorage();
   // Add each recipe to the <main> element
-  console.log(getRecipesFromStorage);
   addRecipesToDocument(recipes);
   // Add the event listeners to the form elements
   initFormHandler();
@@ -63,8 +62,7 @@ function saveRecipesToStorage(recipes) {
   // B1. TODO - Complete the functionality as described in this function
   //            header. It is possible in only a single line, but should
   //            be no more than a few lines.
-  //usually key followed by value, but idk what the val should be
-  // localStorage.setItem('recipes',JSON.stringify(recipes));
+  localStorage.setItem('recipes',JSON.stringify(recipes));
 }
 
 /**
@@ -72,34 +70,34 @@ function saveRecipesToStorage(recipes) {
  * <button>.
  */
 function initFormHandler() {
-  // let mainRef = document.querySelector('main');
+  let mainRef = document.querySelector('main');
   // // B2. TODO - Get a reference to the <form> element
-  // let formRef = document.querySelector('form');
+  let formRef = document.querySelector('form');
   // // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   // //            submit button is clicked
-  // let submitEvent = document.getElementsByTagName('button')[0];
-  // submitEvent.addEventListener("click",(event) =>{
-  //   let formDataObj = new FormData(formRef);
-  //   let recipeObject = new Object();
-  //   for (const pair of formDataObj.entries()) {
-  //     recipeObject[`${pair[0]}`] = `${pair[1]}`;
-  //   }
+  let submitEvent = document.getElementsByTagName('button')[0];
+  submitEvent.addEventListener("click",(event) =>{
+    let formDataObj = new FormData(formRef);
+    let recipeObject = new Object();
+    for (const pair of formDataObj.entries()) {
+      recipeObject[`${pair[0]}`] = `${pair[1]}`;
+    }
 
-  //   let recipeCardEl = document.createElement('recipe-card');
-  //   recipeCardEl.data = recipeObject;
-  //   mainRef.append(recipeCardEl);
+    let recipeCardEl = document.createElement('recipe-card');
+    recipeCardEl.data = recipeObject;
+    mainRef.append(recipeCardEl);
 
-  //   let recipesArray = getRecipesFromStorage();
-  //   recipesArray.push(recipeObject);
-  //   localStorage.setItem('recipes',JSON.stringify(recipesArray));
+    let recipesArray = getRecipesFromStorage();
+    recipesArray.push(recipeObject);
+    localStorage.setItem('recipes',JSON.stringify(recipesArray));
 
-  //   let clearLocalStrRef = document.getElementsByTagName('button')[1];
-  //   clearLocalStrRef.addEventListener("click",(event) =>{
-  //     localStorage.clear();
-  //     mainRef.remove();
-  //   });
-
-  // });
+  });
+  
+  let clearLocalStrRef = document.getElementsByTagName('button')[1];
+  clearLocalStrRef.addEventListener("click",(event) =>{
+      localStorage.clear();
+      mainRef.innerHTML="";
+  });
 
 
   // Steps B4-B9 will occur inside the event listener from step B3
