@@ -134,8 +134,8 @@ class RecipeCard extends HTMLElement {
     //           cardTemplate.html and the data passed in (You should only have one <article>,
     //           do not nest an <article> inside another <article>). You should use Template
     //           literals (tempalte strings) and element.innerHTML for this.
-  
-    articleFromShadow.innerHTML = `<img src=${data.imgSrc}
+  console.log(data.imgSrc);
+    articleFromShadow.innerHTML = `<img src=\'${data.imgSrc}\'
     alt=${data.imgAlt}>
   <p class="title">
     <a href=${data.titleLnk}>${data.titleTxt}</a>
@@ -143,7 +143,7 @@ class RecipeCard extends HTMLElement {
   <p class="organization">${data.organization}</p>
   <div class="rating">
     <span>${data.rating}</span>
-    <img src="/assets/images/icons/5-star.svg" alt="5 stars">
+    <img src="./assets/images/icons/5-star.svg" alt="5 stars">
     <span>${data.numRatings}</span>
   </div>
   <time>${data.lengthTime}</time>
