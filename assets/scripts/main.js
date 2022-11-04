@@ -77,7 +77,7 @@ function initFormHandler() {
   // //            submit button is clicked
   
 
-  formRef.addEventListener("submit",function(){
+  formRef.addEventListener("submit", (event) =>{
     let formDataObj = new FormData(formRef);
     let recipeObject = new Object();
     for (const pair of formDataObj.entries()) {
