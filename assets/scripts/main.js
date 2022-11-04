@@ -75,14 +75,14 @@ function initFormHandler() {
   let formRef = document.querySelector('form');
   // // B3. TODO - Add an event listener for the 'submit' event, which fires when the
   // //            submit button is clicked
-  let submitEvent = document.getElementsByTagName('button')[0];
-  submitEvent.addEventListener("click",(event) =>{
+  
+
+  formRef.addEventListener("submit",function(){
     let formDataObj = new FormData(formRef);
     let recipeObject = new Object();
     for (const pair of formDataObj.entries()) {
       recipeObject[`${pair[0]}`] = `${pair[1]}`;
     }
-
     let recipeCardEl = document.createElement('recipe-card');
     recipeCardEl.data = recipeObject;
     mainRef.append(recipeCardEl);
@@ -90,7 +90,6 @@ function initFormHandler() {
     let recipesArray = getRecipesFromStorage();
     recipesArray.push(recipeObject);
     localStorage.setItem('recipes',JSON.stringify(recipesArray));
-
   });
   
   let clearLocalStrRef = document.getElementsByTagName('button')[1];
